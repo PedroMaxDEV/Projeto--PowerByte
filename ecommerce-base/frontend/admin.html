@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Administração</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="listarProdutosAdmin()">
+    <div class="container">
+        <div class="nav">
+            <a href="admin.html">Admin</a>
+            <a href="index.html">Ver Loja</a>
+        </div>
+
+        <div class="card">
+            <h2>Cadastrar Produto</h2>
+            <form id="formProduto" onsubmit="cadastrarProduto(event)">
+                <input type="text" id="nome" placeholder="Nome do produto" required>
+                <textarea id="descricao" placeholder="Descrição" required></textarea>
+                <input type="number" step="0.01" id="preco" placeholder="Preço" required>
+                <input type="number" id="estoque" placeholder="Estoque" required>
+                <input type="text" id="categoria" placeholder="Categoria" required>
+                <button type="submit">Cadastrar Produto</button>
+            </form>
+            <p id="mensagem"></p>
+        </div>
+
+        <h2>Produtos Cadastrados</h2>
+        <div id="listaAdmin" class="grid"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
