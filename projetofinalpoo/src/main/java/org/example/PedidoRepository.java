@@ -3,10 +3,10 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioRepository {
-    private List<Usuario> usuarios;
-    public UsuarioRepository() {
-        this.usuarios = new ArrayList<>();
+public class PedidoRepository {
+    private List<Pedido> pedidos;
+    public PedidoRepository(){
+        this.pedidos = new ArrayList<>();
     }
     public void salvar(){
 
@@ -23,6 +23,5 @@ public class UsuarioRepository {
     public void buscarPorUsername(){
 
     }
-
-
+    
 }
