@@ -14,5 +14,8 @@ public class UsuarioRepository {
     public void listar(){
 
     }
-    
+    public void remover(){
+
+    }
+
 }
