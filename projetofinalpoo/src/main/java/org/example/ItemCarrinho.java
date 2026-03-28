@@ -25,7 +25,7 @@ public class ItemCarrinho {
         this.quantidade = quantidade;
     }
     public double calcularSubtotal(){
-        return 2.0;
+        return produto.getPreco() * quantidade;
     }
 
 }
