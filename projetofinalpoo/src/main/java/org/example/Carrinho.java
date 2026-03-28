@@ -10,10 +10,12 @@ public class Carrinho {
         this.itens = new ArrayList<>();
     }
     public void adicionarItem(Produto produto, int quantidade){
-
+        itens.add(new ItemCarrinho(produto, quantidade));
     }
     public void removerItem(int idProduto){
-
+        for(int i = 0; i < itens.size(); i++) {
+            
+        }
     }
     public double calcularTotal(){
         return 2.0;
@@ -28,7 +30,7 @@ public class Carrinho {
 
     }
     public boolean estaVazio(){
-        return true;
+        return itens.size() != 0;
     }
 
 }

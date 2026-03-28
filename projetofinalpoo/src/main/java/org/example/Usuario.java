@@ -66,6 +66,8 @@ public abstract class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public abstract boolean autenticarSenha(String senha);
+    public boolean autenticarSenha(String senha) {
+        return this.senha.equals(senha);
+    }
     public abstract void exibirInfo();
 }

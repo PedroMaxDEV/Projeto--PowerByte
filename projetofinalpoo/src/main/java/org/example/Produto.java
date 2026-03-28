@@ -45,13 +45,19 @@ public class Produto {
         this.estoque = estoque;
     }
     public void reduzirEstoque(int qtd){
-
+        if(estoque - qtd < 0) 
+            System.out.println("Estoque não pode ser reduzido a essa quantidade."); 
+        else {
+            estoque -= qtd;
+            System.out.println("Estoque reduzido");
+        }
     }
     public void reporEstoque(int qtd){
-
+        estoque += qtd;
+        System.out.println("Estoque reposto");
     }
-    public boolean temEtoque(int qtd){
-        return true;
+    public boolean temEstoque(int qtd){
+        return qtd >= 0;
     }
 
 }

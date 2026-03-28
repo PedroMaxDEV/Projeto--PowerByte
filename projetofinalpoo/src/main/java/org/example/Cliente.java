@@ -19,7 +19,6 @@ public class Cliente extends Usuario{
         System.out.println("CPF: " + cpf);
         System.out.println("Data de nascimento: " + dataDeNascimento);
         System.out.println("Username: " + username);
-
     }
     @Override
     public boolean autenticarSenha(String senha) {

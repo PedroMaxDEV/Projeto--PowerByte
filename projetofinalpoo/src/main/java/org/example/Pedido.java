@@ -47,8 +47,10 @@ public class Pedido {
     public double calcularTotal() {
         return 2.0;
     }
-    public void autalizarStatus( StatusPedido novoStatus){
+    public void atualizarStatus( StatusPedido novoStatus){
+        this.status = novoStatus;
+    }
+    public void exibirInfo() {
 
     }
-
 }
