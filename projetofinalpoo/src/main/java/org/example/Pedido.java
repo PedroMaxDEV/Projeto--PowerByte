@@ -44,13 +44,25 @@ public class Pedido {
     public LocalDate getData() {
         return data;
     }
+    public String getUsername() {
+        return cliente.getUsername();
+    }
     public double calcularTotal() {
-        return 2.0;
+        double total = 0;
+        for(int i = 0; i < itens.size(); i++) 
+            total += itens.get(i).calcularSubtotal();
+        return total;
     }
     public void atualizarStatus( StatusPedido novoStatus){
         this.status = novoStatus;
     }
     public void exibirInfo() {
-
+        System.out.println("ID: " + id);
+        cliente.exibirInfo();
+        for(int i = 0; i < itens.size(); i++)
+            itens.get(i).exibirInfo();
+        System.out.println("Total: " + total);
+        System.out.println("Status: " + status.getDescricao());
+        System.out.println("Data: " + data);
     }
 }
