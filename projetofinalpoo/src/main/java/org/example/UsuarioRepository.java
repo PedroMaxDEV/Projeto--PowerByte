@@ -12,8 +12,10 @@ public class UsuarioRepository {
         usuarios.add(usuario);
     }
     public void listar(){
-        for(int i = 0; i < usuarios.size(); i++)
-            usuarios.get(i).exibirInfo();
+        for(int i = 0; i < usuarios.size(); i++) {
+            if(usuarios.get(i).getTipo().equals("Cliente"))
+                usuarios.get(i).exibirInfo();
+        }
     }
     public boolean remover(int id){
         for(int i = 0; i < usuarios.size(); i++) {
@@ -31,9 +33,9 @@ public class UsuarioRepository {
         }
         return null;
     }
-    public Usuario buscarPorUsername(String username){
+    public Usuario buscarPorUsernameESenha(String username, String senha){
         for(int i = 0; i < usuarios.size(); i++) {
-            if(usuarios.get(i).getUsername().equals(username))
+            if(usuarios.get(i).getUsername().equals(username) && usuarios.get(i).getSenha().equals(senha))
                 return usuarios.get(i);
         }
         return null;

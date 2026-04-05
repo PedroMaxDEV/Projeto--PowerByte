@@ -1,10 +1,11 @@
 package org.example;
-
+import java.util.Scanner;
 public class Produto {
     private int id;
+    private int estoque;
     private String nome;
     private double preco;
-    private int estoque;
+    private Scanner sc = new Scanner(System.in);
     public Produto(int id, String nome, double preco, int estoque) {
         this.id = id;
         this.nome = nome;
@@ -34,6 +35,25 @@ public class Produto {
     }
     public void setEstoque(int estoque) {
         this.estoque = estoque;
+    }
+    public void atualizar() {
+        while(true) {
+            System.out.println("Reduzir ou repor estoque?");
+            System.out.println("1 - Reduzir");
+            System.out.println("2 - Repor");
+            int comando = sc.nextInt();
+            System.out.printf("Quantidade = ");
+            int qtd = sc.nextInt();
+            if(comando == 1) {
+                reduzirEstoque(qtd);
+                break;
+            } else if(comando == 2) {
+                reporEstoque(qtd);
+                break;
+            } else {
+                System.out.println("Comando inválido. Tente novamente.");
+            }
+        }
     }
     public void reduzirEstoque(int qtd){
         if(estoque - qtd < 0) 

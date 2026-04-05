@@ -1,19 +1,19 @@
 package org.example;
 import java.util.Scanner;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 public class Main {
     public static void main(String[] args) {
         int comando;
-        int contadorId = 0;
-        String cpf;
-        String senha;
+        int id;
         String username;
-        String nomeCompleto;
-        String dataDeNascimento;
+        String senha;
         Scanner sc = new Scanner(System.in);
+        Produto produto;
         Usuario usuario;
+        Pedido pedido;
         UsuarioRepository usuarios = new UsuarioRepository();
+        ProdutoRepository produtos = new ProdutoRepository();
+        PedidoRepository pedidos = new PedidoRepository();
         usuarios.salvar(new Admin(0, "José Álvaro", "000.000.000-00", LocalDate.of(2000, 1, 1), "Álvaro", "senha"));
         while(true) {
             Menus.inicio();
@@ -24,34 +24,62 @@ public class Main {
                 username = sc.nextLine();
                 System.out.printf("Senha = ");
                 senha = sc.nextLine();
-                usuario = usuarios.buscarPorUsername(username);
+                usuario = usuarios.buscarPorUsernameESenha(username, senha);
                 if(usuario == null) 
                     System.out.println("Usuário não encontrado.");
                 else {
                     if(usuario.tipo.equals("Admin")) {
-                        Menus.admin();
+                        while(true) {
+                            Menus.admin();
+                            comando = sc.nextInt();
+                            if(comando == 1) {
+                                produtos.salvar(Criar.produto());
+                            } else if(comando == 2) {
+                                produtos.listar();
+                            } else if(comando == 3) {
+                                System.out.printf("Id do produto = ");
+                                id = sc.nextInt();
+                                if(produtos.remover(id))
+                                    System.out.println("Produto removido com sucesso!");
+                                else 
+                                    System.out.println("Produto não encontrado.");
+                            } else if(comando == 4) {
+                                System.out.printf("Id do produto = ");
+                                id = sc.nextInt();
+                                produto = produtos.buscarPorId(id);
+                                if(produto != null)     
+                                    produto.atualizar();
+                                else 
+                                    System.out.println("Produto não encontrado.");
+                            } else if(comando == 5) {
+                                usuarios.listar();
+                            } else if(comando == 6) {
+                                pedidos.listar();
+                            } else if(comando == 7) {
+                                System.out.printf("Id do pedido = ");
+                                id = sc.nextInt();
+                                pedido = pedidos.buscarPorId(id);
+                                if(pedido != null)   
+                                    pedido.atualizar();
+                                else 
+                                    System.out.println("Pedido não encontrado.");
+                            } else if(comando == 0) {
+                                break;
+                            }
+                        }
                     } else {
                         Menus.cliente();
                     }
                 }
-            } else if(comando == 1) {
-                System.out.printf("Nome completo = ");
-                nomeCompleto = sc.nextLine();
-                System.out.printf("CPF = ");
-                cpf = sc.nextLine();
-                System.out.printf("Data de nascimento (aaaa/mm/dd) = ");
-                dataDeNascimento = sc.nextLine();
-                System.out.printf("Username = ");
-                username = sc.nextLine();
-                System.out.printf("Senha = ");
-                senha = sc.nextLine();
-                usuarios.salvar(new Cliente(contadorId++, nomeCompleto, cpf, LocalDate.parse(dataDeNascimento), username, senha));
-
+            } else if(comando == 2) {
+                usuarios.salvar(Criar.cliente());
+                System.out.println("Usuário cadastrado com sucesso!");
             } else if(comando == 0) {
                 System.out.println("Programa encerrado.");
                 break;
             } else 
                 System.out.println("Comando inválido. Tente novamente.");
         }
+        sc.close();
     }
 }

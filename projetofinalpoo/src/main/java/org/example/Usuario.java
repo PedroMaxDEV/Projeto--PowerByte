@@ -70,5 +70,8 @@ public abstract class Usuario {
     public boolean autenticarSenha(String senha) {
         return this.senha.equals(senha);
     }
+    public String getTipo() {
+        return tipo;
+    }
     public abstract void exibirInfo();
 }

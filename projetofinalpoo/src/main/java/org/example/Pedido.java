@@ -3,7 +3,7 @@ package org.example;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Scanner;
 public class Pedido {
     private int id;
     private Cliente cliente;
@@ -11,6 +11,7 @@ public class Pedido {
     private double total;
     private StatusPedido status;
     private LocalDate data;
+    private Scanner sc = new Scanner(System.in);
 
     public Pedido(int id, Cliente cliente, List<ItemPedido> itens) {
         this.id = id;
@@ -64,5 +65,16 @@ public class Pedido {
         System.out.println("Total: " + total);
         System.out.println("Status: " + status.getDescricao());
         System.out.println("Data: " + data);
+    }
+    public void atualizar() {
+        System.out.printf("Status do pedido (PENDENTE, PAGO, ENVIADO, etc.) = ");
+        sc.nextLine();
+        String novo = sc.nextLine().toUpperCase().trim();
+        try {
+            status = StatusPedido.valueOf(novo);
+            System.out.println("Status atualizado para: " + status.getDescricao());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro: Status inválido digitado.");
+        }
     }
 }
