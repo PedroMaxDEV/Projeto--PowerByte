@@ -5,10 +5,11 @@ import java.time.LocalDate;
 public abstract class Usuario {
     protected int id;
     protected String nomeCompleto;
-    protected String cpf;
-    protected LocalDate dataDeNascimento;
     protected String username;
     protected String senha;
+    protected String tipo;
+    protected String cpf;
+    protected LocalDate dataDeNascimento;
 
     public Usuario(int id, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String username, String senha) {
         this.id = id;

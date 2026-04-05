@@ -8,6 +8,7 @@ public class Admin extends Usuario{
     private Scanner scanner = new Scanner(System.in);
     public Admin(int id, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String username, String senha) {
         super(id, nomeCompleto, cpf, dataDeNascimento, username, senha);
+        tipo = "Admin";
     }
     @Override
     public void exibirInfo() {

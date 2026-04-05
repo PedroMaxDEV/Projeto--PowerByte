@@ -8,6 +8,7 @@ public class Cliente extends Usuario{
     protected List<Pedido> pedidos;
     public Cliente(int id, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String username, String senha) {
        super(id,nomeCompleto, cpf, dataDeNascimento, username, senha);
+       tipo = "Cliente";
        this.pedidos = new ArrayList<>();
     }
     @Override
