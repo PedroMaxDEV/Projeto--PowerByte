@@ -1,11 +1,9 @@
 package org.example;
 import java.time.LocalDate;
-import java.util.Scanner;
 public class Admin extends Usuario{
     private UsuarioRepository usuarios;
     private PedidoRepository pedidos;
     private ProdutoRepository produtos;
-    private Scanner sc = new Scanner(System.in);
     public Admin(int id, String nomeCompleto, String cpf, LocalDate dataDeNascimento, String username, String senha) {
         super(id, nomeCompleto, cpf, dataDeNascimento, username, senha);
         tipo = "Admin";
@@ -33,16 +31,16 @@ public class Admin extends Usuario{
     }
     public void removerProduto(){
         System.out.printf("Id do produto = ");
-        int id = sc.nextInt();
-        if(produtos.remover(id))
+        int idProduto = Criar.entradaInt();
+        if(produtos.remover(idProduto))
             System.out.println("Produto removido com sucesso!");
         else 
             System.out.println("Produto não encontrado.");
     }
     public void atualizarProduto() {
         System.out.printf("Id do produto = ");
-        int id = sc.nextInt();
-        Produto produto = produtos.buscarPorId(id);
+        int idProduto = Criar.entradaInt();
+        Produto produto = produtos.buscarPorId(idProduto);
         if(produto != null)     
             produto.atualizar();
         else 
@@ -62,8 +60,8 @@ public class Admin extends Usuario{
     }
     public void atualizarStatusPedido() {
         System.out.printf("Id do pedido = ");
-        int id = sc.nextInt();
-        Pedido pedido = pedidos.buscarPorId(id);
+        int idPedido = Criar.entradaInt();
+        Pedido pedido = pedidos.buscarPorId(idPedido);
         if (pedido != null) {
             pedido.setRepository(pedidos);
             pedido.atualizar();

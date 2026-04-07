@@ -39,12 +39,12 @@ public class Criar {
         sc.nextLine();
         String nome = sc.nextLine();
         System.out.printf("Preço = ");
-        double preco = sc.nextDouble();
+        double preco = entradaDouble();
         System.out.printf("Estoque = ");
         int estoque = 0;
         while (true) {
             try {
-                estoque = entrada();
+                estoque = entradaInt();
                 if (estoque < 0)
                     throw new NumeroNegativoException("O estoque não pode ser negativo");
                 break;
@@ -92,6 +92,33 @@ public class Criar {
             try {
                 int val = sc.nextInt();
                 sc.nextLine(); // consome o '\n' deixado pelo nextInt — Bug Fix #2
+                return val;
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    /** Alias de entrada() — mantém compatibilidade com chamadas do Admin e outros. */
+    public static int entradaInt() {
+        while (true) {
+            try {
+                int val = sc.nextInt();
+                sc.nextLine();
+                return val;
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    /** Lê um double do terminal com tratamento de erro. */
+    public static double entradaDouble() {
+        while (true) {
+            try {
+                double val = sc.nextDouble();
                 return val;
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida.");
