@@ -32,7 +32,7 @@ public class ItemPedido {
     }
 
     public void exibirInfo() {
-        System.out.println(produto.toString());
+        produto.exibirInfo();
         System.out.println("Quantidade: " + quantidade);
         System.out.println("Preço unitário: " + precoUnitario);
     }

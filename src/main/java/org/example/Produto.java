@@ -77,7 +77,8 @@ public class Produto {
     public boolean temEstoque(int qtd){
         return qtd >= 0;
     }
-    public void toString() {
+    public void exibirInfo() {
+        System.out.println(nome);
         System.out.printf("ID = %d\n", id);
         System.out.printf("Preço = %.2f\n", preco);
         System.out.printf("Estoque = %d\n", estoque);

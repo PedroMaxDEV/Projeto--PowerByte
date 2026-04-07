@@ -49,7 +49,8 @@ public class ProdutoRepository {
         try (Statement stmt = conexao.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                System.out.println(montarProduto(rs));
+                montarProduto(rs).exibirInfo();
+                System.out.println("=======================");
             }
         } catch (SQLException e) {
             System.err.println("[DB] Erro ao listar produtos: " + e.getMessage());
