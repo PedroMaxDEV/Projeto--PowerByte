@@ -1,4 +1,4 @@
-package org.example;
+wpackage org.example;
 
 /**
  * ItemPedido — Representa um produto e sua quantidade dentro de um pedido.

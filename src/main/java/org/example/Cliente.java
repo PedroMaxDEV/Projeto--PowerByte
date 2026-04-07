@@ -83,7 +83,7 @@ public class Cliente extends Usuario {
     }
     public void verPedidos(){
         for(Pedido pedido : pedidos) {
-            System.out.println(pedido);
+            pedido.exibirInfo();
             System.out.println("=======================");
         }
     }
