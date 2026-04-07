@@ -40,10 +40,10 @@ public class Criar {
         String nome = sc.nextLine();
         System.out.printf("Preço = ");
         double preco = entradaDouble();
-        System.out.printf("Estoque = ");
         int estoque = 0;
         while (true) {
             try {
+                System.out.printf("Estoque = ");
                 estoque = entradaInt();
                 if (estoque < 0)
                     throw new NumeroNegativoException("O estoque não pode ser negativo");

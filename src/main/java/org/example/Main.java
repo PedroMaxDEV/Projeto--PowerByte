@@ -36,14 +36,12 @@ public class Main {
         ProdutoRepository produtos = new ProdutoRepository(db.getConexao());
         PedidoRepository  pedidos  = new PedidoRepository(db.getConexao());
 
-        // Bug Fix #1 — Inicializa idPedido a partir do MAX(id) do banco
         // Sem isso, cada reinicialização do programa começava em 0 e colidia com pedidos já existentes
         int idPedido = pedidos.proximoId();
 
-        // Bug Fix #1 — Sincroniza contadores de ID de cliente/produto com o banco
+        // Sincroniza contadores de ID de cliente/produto com o banco
         Criar.inicializarContadores(db.getConexao());
 
-        // Admin padrão — criado apenas se não existir no banco
         if (usuarios.buscarPorUsername("Alvaro") == null) {
             usuarios.salvar(new Admin(0, "José Álvaro", "000.000.000-00", LocalDate.of(2000, 1, 1), "Alvaro", "senha"));
         }
@@ -71,7 +69,7 @@ public class Main {
                         admin.setUsuarios(usuarios);
                         admin.setPedidos(pedidos);
                         admin.setProdutos(produtos);
-                        System.out.printf("Bem-vindo, admin %s!%n", admin.getUsername());
+                        System.out.printf("Bem-vindo, admin %s!\n", admin.getUsername());
 
                         while (true) {
                             Menus.admin();
@@ -93,7 +91,7 @@ public class Main {
                         // ── Sessão Cliente ────────────────────────────────────
                         cliente = (Cliente) usuario;
                         cliente.setProdutos(produtos);
-                        System.out.printf("Bem-vindo, %s!%n", cliente.getUsername());
+                        System.out.printf("Bem-vindo, %s!\n", cliente.getUsername());
 
                         // #7 — Carrega histórico de pedidos do banco ao fazer login
                         ArrayList<Pedido> historico = pedidos.buscarTodosPorUsername(cliente.getUsername());
@@ -127,13 +125,15 @@ public class Main {
                                             item.getProduto().getId(),
                                             item.getQuantidade()
                                         );
-                                        if (!ok) { estoqueOk = false; break; }
+                                        if (!ok) {
+                                            estoqueOk = false; 
+                                            break;
+                                        }
                                     }
 
-                                    if (!estoqueOk) {
+                                    if (!estoqueOk) 
                                         System.out.println("Compra cancelada: estoque insuficiente para um ou mais itens.");
-                                    } else {
-                                        // #4 — Pedido salvo em transação (COMMIT/ROLLBACK)
+                                    else {
                                         pedidos.salvar(pedido);
                                         cliente.adicionarPedido(pedido);
                                         System.out.println("Compra finalizada! Estoque e pedido atualizados no banco.");
@@ -148,7 +148,6 @@ public class Main {
                 }
 
             } else if (comando == 2) {
-                // ── Cadastro de novo cliente ───────────────────────────────────
                 Cliente novoCliente = Criar.cliente();
                 usuarios.salvar(novoCliente);
                 System.out.println("Usuário cadastrado com sucesso!");
@@ -163,7 +162,6 @@ public class Main {
                 System.out.println("Comando inválido. Tente novamente.");
             }
         }
-
         sc.close();
     }
 }
