@@ -12,7 +12,6 @@ public class Pedido {
     private StatusPedido status;
     private LocalDate data;
     private Scanner sc = new Scanner(System.in);
-    // Referência opcional ao repositório para persistir mudanças de status
     private PedidoRepository repository;
 
     public Pedido(int id, Cliente cliente, ArrayList<ItemPedido> itens) {
@@ -79,8 +78,8 @@ public class Pedido {
         try {
             status = StatusPedido.valueOf(novo);
             System.out.println("Status atualizado para: " + status.getDescricao());
-            // Persiste a mudança de status no banco, se repositório estiver disponível
-            if (repository != null) repository.atualizarStatus(this);
+            if (repository != null) 
+                repository.atualizarStatus(this);
         } catch (IllegalArgumentException e) {
             System.out.println("Erro: Status inválido digitado.");
         }
