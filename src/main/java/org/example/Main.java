@@ -83,7 +83,8 @@ public class Main {
                             else if (comando == 5) admin.listarUsuarios();
                             else if (comando == 6) admin.listarPedidos();
                             else if (comando == 7) admin.atualizarStatusPedido();
-                            else if (comando == 8) admin.relatorioVendas();   // #8
+                            else if (comando == 8) admin.relatorioVendas();   
+                            else if (comando == 9) admin.removerUsuario();
                             else if (comando == 0) break;
                             else System.out.println("Comando inválido. Tente novamente.");
                         }

@@ -28,6 +28,14 @@ public class Admin extends Usuario{
         else 
             System.out.println("Produto não encontrado.");
     }
+    public void removerUsuario() {
+        System.out.printf("Id do usuário = ");
+        int idUsuario = Criar.entradaInt();
+        if(usuarios.remover(idUsuario))
+            System.out.println("Usuário removido com sucesso!");
+        else 
+            System.out.println("Usuário não encontrado.");
+    }
     public void atualizarProduto() {
         System.out.printf("Id do produto = ");
         int idProduto = Criar.entradaInt();

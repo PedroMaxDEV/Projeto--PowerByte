@@ -71,6 +71,7 @@ public class Cliente extends Usuario {
             return null;
     }
     public void adicionarPedido(Pedido pedido) {
+        pedido.setCliente(this);
         pedidos.add(pedido);
     }
     public void verPedidos(){

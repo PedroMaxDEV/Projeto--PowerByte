@@ -67,7 +67,7 @@ public class ProdutoRepository {
             stmt.setInt(1, id);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
-            System.err.println("[DB] Erro ao remover produto: " + e.getMessage());
+            //System.err.println("[DB] Erro ao remover produto: " + e.getMessage());
             return false;
         }
     }

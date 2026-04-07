@@ -14,6 +14,7 @@ public class Menus {
         System.out.println("6 - Listar pedidos");
         System.out.println("7 - Atualizar status do pedido");
         System.out.println("8 - Relatório de vendas");
+        System.out.println("9 - Remover usuário");
         System.out.println("0 - Sair");
     }
     public static void cliente() {

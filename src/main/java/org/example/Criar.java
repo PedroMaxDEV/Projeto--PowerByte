@@ -58,7 +58,6 @@ public class Criar {
 
     public static Cliente cliente() {
         System.out.printf("Nome completo = ");
-        sc.nextLine();
         String nomeCompleto = sc.nextLine();
         System.out.printf("CPF = ");
         String CPF = "";
