@@ -22,7 +22,9 @@ public class Pedido {
         this.status = StatusPedido.PENDENTE;
         this.data = LocalDate.now();
     }
-
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     public int getId() {
         return id;
     }
@@ -79,7 +81,6 @@ public class Pedido {
     }
     public void atualizar() {
         System.out.printf("Status do pedido (PENDENTE, PAGO, ENVIADO, etc.) = ");
-        sc.nextLine();
         String novo = sc.nextLine().toUpperCase().trim();
         try {
             status = StatusPedido.valueOf(novo);
