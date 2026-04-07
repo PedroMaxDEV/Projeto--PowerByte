@@ -29,7 +29,7 @@ public class Carrinho {
     }
     public void listarItens(){
         for(ItemCarrinho item : itens){
-            System.out.println(item);
+            System.out.println(item.toString());
             System.out.println("=======================");
         }
     }
