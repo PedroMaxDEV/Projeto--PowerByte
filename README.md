@@ -111,6 +111,33 @@ projetofinalpoo/
 
 ---
 
+## 👥 Contribuidores
+
+### Equipe do Projeto
+
+| Desenvolvedor | Contribuição Principal |
+|---|---|
+| **Pedro Max** | Estrutura base do projeto — classes de domínio (`Usuario`, `Admin`, `Cliente`, `Produto`, `Pedido`), sistema de menus, lógica de carrinho e fluxo de compra |
+| **Diego Euzébio** | **Integração com banco de dados SQLite** — camada de persistência completa com `DatabaseManager`, todos os `Repository`, transações SQL, histórico de pedidos, relatório de vendas e correções de bugs |
+
+### Contribuição detalhada — Diego Euzébio
+
+> ⚠️ Nota: Por razões de força maior, **não será possível realizar a apresentação presencial** desta parte do trabalho. Toda a implementação está documentada neste README e em [`BANCO_DE_DADOS.md`](BANCO_DE_DADOS.md).
+
+A responsabilidade de **Diego Euzébio** foi integrar persistência real ao sistema, transformando-o de um programa que perdia todos os dados ao fechar para uma aplicação com banco de dados funcional. Isso envolveu:
+
+- Criação do **`DatabaseManager.java`** — gerenciamento de conexão, criação de tabelas e inserção de dados iniciais
+- Refatoração de **`UsuarioRepository`**, **`ProdutoRepository`** e **`PedidoRepository`** — substituindo `ArrayList` por SQL real
+- Implementação de **transações atômicas** (`COMMIT/ROLLBACK`) ao salvar pedidos
+- Validação de **CPF único** via constraint `UNIQUE` no banco
+- Controle de **estoque** com decremento no banco ao finalizar compra
+- Carregamento do **histórico de pedidos** do cliente ao fazer login
+- **Relatório de vendas** para o Admin com agregações SQL (`SUM`, `COUNT`, `AVG`, `GROUP BY`)
+- Correção de dois bugs críticos: **inicialização de contadores de ID** a partir do banco e **consumo do buffer do Scanner** após `nextInt()`
+- Mesclagem das alterações com a versão atualizada do repositório remoto
+
+---
+
 ## 📄 Documentação Adicional
 
 Veja [`BANCO_DE_DADOS.md`](BANCO_DE_DADOS.md) para uma explicação detalhada do banco de dados, tabelas e melhorias implementadas.
