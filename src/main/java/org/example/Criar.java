@@ -61,37 +61,42 @@ public class Criar {
         sc.nextLine();
         String nomeCompleto = sc.nextLine();
         System.out.printf("CPF = ");
-        String cpf = sc.nextLine();
-        System.out.printf("Data de nascimento (aaaa-mm-dd) = ");
-        String dataDeNascimento = sc.nextLine();
+        String CPF = "";
+        while (true) {
+            try {
+                CPF = sc.nextLine();
+                if(Verificar.CPFInvalido(CPF))
+                    throw new CPFInvalidoException("Formato incorreto de CPF. Tente novamente!");
+                break;
+            } catch (CPFInvalidoException e) {
+                System.out.println(e.getMessage());
+                sc.nextLine();
+            }
+        }
+        LocalDate data = LocalDate.of(2000, 1, 1);
+        while (true) {
+            try {
+                System.out.printf("Data de nascimento (aaaa-mm-dd) = ");
+                String dataDeNascimento = sc.nextLine();
+                data = LocalDate.parse(dataDeNascimento);
+                break;
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato incorreto de data de nascimento. Tente novamente!");
+                sc.nextLine();
+            }
+        }
         System.out.printf("Username = ");
         String username = sc.nextLine();
         System.out.printf("Senha = ");
         String senha = sc.nextLine();
-        Cliente cliente = new Cliente();
-        while (true) {
-            try {
-                cliente = new Cliente(contadorId++, nomeCompleto, cpf, LocalDate.parse(dataDeNascimento), username, senha);
-                break;
-            } catch (DateTimeParseException e) {
-                System.out.println("Formato errado de data de nascimento. Tente novamente!");
-                System.out.printf("Data de nascimento (aaaa-mm-dd) = ");
-                dataDeNascimento = sc.nextLine();
-            }
-        }
-        return cliente;
+        return new Cliente(contadorId++, nomeCompleto, CPF, data, username, senha);
     }
 
-    /**
-     * Bug Fix #2 — Lê um inteiro do terminal e consome o '\n' restante no buffer.
-     * Sem o sc.nextLine() após nextInt(), o próximo sc.nextLine() (ex: username no login)
-     * leria uma string vazia em vez do texto digitado pelo usuário.
-     */
     public static int entrada() {
         while (true) {
             try {
                 int val = sc.nextInt();
-                sc.nextLine(); // consome o '\n' deixado pelo nextInt — Bug Fix #2
+                sc.nextLine(); 
                 return val;
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida.");
@@ -99,8 +104,6 @@ public class Criar {
             }
         }
     }
-
-    /** Alias de entrada() — mantém compatibilidade com chamadas do Admin e outros. */
     public static int entradaInt() {
         while (true) {
             try {
@@ -113,8 +116,6 @@ public class Criar {
             }
         }
     }
-
-    /** Lê um double do terminal com tratamento de erro. */
     public static double entradaDouble() {
         while (true) {
             try {
