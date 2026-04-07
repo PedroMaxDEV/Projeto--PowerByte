@@ -63,10 +63,16 @@ public class Pedido {
         this.repository = repository;
     }
     public void exibirInfo() {
-        System.out.println("ID: " + id);
+        System.out.println("DADOS DO CLIENTE:");
         cliente.exibirInfo();
-        for(int i = 0; i < itens.size(); i++)
+        System.out.println("==================");
+        for(int i = 0; i < itens.size(); i++) {
+            System.out.println("DADOS DO ITEM:");
             itens.get(i).exibirInfo();
+            System.out.println("====================");
+        }
+        System.out.println("DADOS DO PEDIDO:");
+        System.out.println("ID: " + id);
         System.out.println("Total: " + total);
         System.out.println("Status: " + status.getDescricao());
         System.out.println("Data: " + data);

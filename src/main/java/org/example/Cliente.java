@@ -20,14 +20,6 @@ public class Cliente extends Usuario {
     public void setUsername(String username) {
         this.username = username;
     }
-    @Override
-    public void exibirInfo() {
-        System.out.println("ID: " + id);
-        System.out.println("Nome completo: " + nomeCompleto);
-        System.out.println("CPF: " + cpf);
-        System.out.println("Data de nascimento: " + dataDeNascimento);
-        System.out.println("Username: " + username);
-    }
     public void setProdutos(ProdutoRepository produtos) {
         this.produtos = produtos;
     }
