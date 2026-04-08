@@ -49,7 +49,7 @@ public class Main {
         // ── Loop principal ────────────────────────────────────────────────────
         while (true) {
             Menus.inicio();
-            comando = Criar.entrada();
+            comando = Criar.entradaInt();
 
             if (comando == 1) {
                 // ── Login ─────────────────────────────────────────────────────
@@ -73,7 +73,7 @@ public class Main {
 
                         while (true) {
                             Menus.admin();
-                            comando = Criar.entrada();
+                            comando = Criar.entradaInt();
                             if      (comando == 1) admin.cadastrarProduto();
                             else if (comando == 2) admin.listarProdutos();
                             else if (comando == 3) admin.removerProduto();
@@ -104,7 +104,7 @@ public class Main {
 
                         while (true) {
                             Menus.cliente();
-                            comando = Criar.entrada();
+                            comando = Criar.entradaInt();
                             if      (comando == 1) cliente.listarProdutos();
                             else if (comando == 2) cliente.adicionarAoCarrinho();
                             else if (comando == 3) cliente.verCarrinho();

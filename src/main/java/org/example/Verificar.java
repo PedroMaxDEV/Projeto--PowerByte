@@ -1,9 +1,6 @@
 package org.example;
 
 public class Verificar {
-    public static boolean estoqueNegativo(int estoque) {
-        return estoque < 0;
-    }
     public static boolean CPFInvalido(String CPF) {
         if (CPF.length() != 14) 
             return true;

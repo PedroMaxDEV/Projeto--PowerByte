@@ -39,7 +39,19 @@ public class Criar {
         sc.nextLine();
         String nome = sc.nextLine();
         System.out.printf("Preço = ");
-        double preco = entradaDouble();
+        double preco = 0;
+        while (true) {
+            try {
+                System.out.printf("Estoque = ");
+                preco = entradaDouble();
+                if (preco < 0)
+                    throw new NumeroNegativoException("O preço não pode ser negativo");
+                break;
+            } catch (NumeroNegativoException e) {
+                System.out.println(e.getMessage());
+                sc.nextLine();
+            }
+        }
         int estoque = 0;
         while (true) {
             try {
@@ -89,19 +101,6 @@ public class Criar {
         System.out.printf("Senha = ");
         String senha = sc.nextLine();
         return new Cliente(contadorId++, nomeCompleto, CPF, data, username, senha);
-    }
-
-    public static int entrada() {
-        while (true) {
-            try {
-                int val = sc.nextInt();
-                sc.nextLine(); 
-                return val;
-            } catch (InputMismatchException e) {
-                System.out.println("Entrada inválida.");
-                sc.nextLine();
-            }
-        }
     }
     public static int entradaInt() {
         while (true) {
